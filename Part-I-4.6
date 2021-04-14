@@ -1,0 +1,28 @@
+ospf_route = 'O 10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0'
+
+#Prefix                10.0.24.0/24
+#AD/Metric             110/41
+#Next-Hop              10.0.13.3
+#Last update           3d18h
+#Outbound Interface    FastEthernet0/0
+
+ospf_route=ospf_route.split()
+Protocol=ospf_route[0].strip(',')
+Prefix=ospf_route[1].strip(',')
+Metric=ospf_route[2].strip('[]')
+NextHop=ospf_route[4].strip(',')
+Update=ospf_route[5].strip(',')
+Interface=ospf_route[6].strip(',')
+template = '''
+'Protocol:           {:15}'
+'Prefix:             {:15}'
+'AD/Metric:          {:15}'
+'Next-Hop:           {:15}'
+'Last update:        {:15}'
+'Outbound Interface: {:15}'
+'''
+
+
+
+
+print(template.format(Protocol, Prefix, Metric, NextHop, Update, Interface))
