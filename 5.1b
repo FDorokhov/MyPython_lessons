@@ -28,7 +28,10 @@ london_co = {
         "routing": True
     }
 }
-b=london_co.keys()  #Достаем ключи словаря
+b=list(london_co[a].keys())  #Достаем ключи словаря
+b=b.replace('[', ' ')
+b=b.replace(']', ' ')
+b=b.replace('dict_keys', '')
 c=input('Введите имя параметра: ' + str(b))
-print(london_co[c])
+print(london_co[a][c])
 
