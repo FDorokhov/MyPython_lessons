@@ -8,7 +8,10 @@ Network:
 '''
 Mask = '''
 Mask:
-/{}
+/{}'''
+Mask2 = '''
+{0:<8} {1:<8} {2:<8} {3:<8}
+{0:08b} {1:08b} {2:08b} {3:08b}
 '''
 c= a.split('/')
 ip = c[0]
@@ -16,3 +19,11 @@ mask = c[1]
 ip=ip.split('.')
 print(Network.format(int(ip[0]), int(ip[1]), int(ip[2]), int(ip[3])))
 print(Mask.format(mask))
+count_mask_net = int(mask)
+count_mask_hosts = 32 - count_mask_net
+count_mask_total = '1' * count_mask_net + '0' * count_mask_hosts
+mask1 = count_mask_total[0:8]
+mask2 = count_mask_total[8:16]
+mask3 = count_mask_total[16:24]
+mask4 = count_mask_total[24:32]
+print(Mask2.format(int(mask1, 2), int(mask2, 2), int(mask3, 2), int(mask4, 2)))
