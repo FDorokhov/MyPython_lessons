@@ -1,0 +1,18 @@
+Запросить у пользователя ввод IP-сети в формате: 10.1.1.0/24
+
+a=input('Введите адрес сети в формате 10.1.1.1/24 ')
+Network = '''
+Network:
+{0:<8} {1:<8} {2:<8} {3:<8}
+{0:08b} {1:08b} {2:08b} {3:08b}
+'''
+Mask = '''
+Mask:
+/{}
+'''
+c= a.split('/')
+ip = c[0]
+mask = c[1]
+ip=ip.split('.')
+print(Network.format(int(ip[0]), int(ip[1]), int(ip[2]), int(ip[3])))
+print(Mask.format(mask))
