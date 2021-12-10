@@ -1,6 +1,6 @@
 Переделать скрипт из задания 5.1c таким образом, чтобы, при запросе параметра, пользователь мог вводить название параметра в любом регистре.
 
-a=input('Введите имя устройства: ')
+enter = input('Введите имя устройства: ')
 london_co = {
     "r1": {
         "location": "21 New Globe Walk",
@@ -26,10 +26,7 @@ london_co = {
         "routing": True
     }
 }
-b=str(london_co[a].keys())
-b=b.replace('[', '')
-b=b.replace(']', '')
-b=b.replace('dict_keys', '')
-
-c = input('Введите имя параметра: '+ str(b)).lower()
-print(london_co[a][c])
+enters = tuple(london_co[enter])
+enters1 = 'Введите имя параметра ' + str(enters) + ': '
+enter2 = input(enters1)
+print(london_co[enter].get(enter2.lower(), 'Такого параметра нет'))
