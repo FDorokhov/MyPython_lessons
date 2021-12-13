@@ -1,29 +1,26 @@
 Запросить у пользователя ввод IP-сети в формате: 10.1.1.0/24
 
-a=input('Введите адрес сети в формате 10.1.1.1/24 ')
-Network = '''
+x = input('Введите адрес IP-сети в формате: 10.1.1.0/24 ')
+network = '''
 Network:
-{0:<8} {1:<8} {2:<8} {3:<8}
+{0} {1} {2} {3}
 {0:08b} {1:08b} {2:08b} {3:08b}
 '''
-Mask = '''
+mask = '''
 Mask:
-/{}'''
-Mask2 = '''
-{0:<8} {1:<8} {2:<8} {3:<8}
+/{} 
+'''
+mask1 = '''
+{0} {1} {2} {3}
 {0:08b} {1:08b} {2:08b} {3:08b}
 '''
-c= a.split('/')
-ip = c[0]
-mask = c[1]
-ip=ip.split('.')
-print(Network.format(int(ip[0]), int(ip[1]), int(ip[2]), int(ip[3])))
-print(Mask.format(mask))
-count_mask_net = int(mask)
-count_mask_hosts = 32 - count_mask_net
-count_mask_total = '1' * count_mask_net + '0' * count_mask_hosts
-mask1 = count_mask_total[0:8]
-mask2 = count_mask_total[8:16]
-mask3 = count_mask_total[16:24]
-mask4 = count_mask_total[24:32]
-print(Mask2.format(int(mask1, 2), int(mask2, 2), int(mask3, 2), int(mask4, 2)))
+a = x.split('/')
+a1 = a[0].split('.')
+a2 = a[1]
+net = network.format(int(a1[0]), int(a1[1]), int(a1[2]), int(a1[3]))
+msk = mask.format(a2)
+count_mask = 32 - int(a2)
+mask_count = int(a2) * '1' + count_mask * '0'
+
+
+print(net, msk, mask1.format(int(mask_count[0:8], 2), int(mask_count[8:16], 2), int(mask_count[16:24], 2) ,int(mask_count[24:31], 2)))
